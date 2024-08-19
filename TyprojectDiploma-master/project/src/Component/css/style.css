@@ -1,0 +1,1621 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&family=Forum&display=swap");
+
+:root{
+  --primary-color: #12c2b9;
+  --secondary: #dbfffe;
+  --black: #141414;
+  --white: #fff;
+  --box-shadow: 0 .5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+a{
+  text-decoration: none;
+  color:black;
+}
+
+*{
+  font-family: 'DM Sans', sans-serif;
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  outline: none; border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+html{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 9rem;
+  scroll-behavior: smooth;
+}
+
+html::-webkit-scrollbar{
+  width: 1rem;
+}
+
+html::-webkit-scrollbar-track{
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb{
+  background: var(--primary-color);
+}
+
+section{
+  padding: 5rem 7%;
+}
+
+.heading{
+  position: relative;
+  color: var(--primary-color);
+  font-size: 3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .4rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.heading::after{
+  /*content: url('../images/batu.jpeg');*/
+  display: block;
+  width: 10rem;
+  margin-inline: auto;
+  margin-top: -1rem;
+}
+
+@keyframes moveLeft {
+  0% {
+    transform: translateX(0); /* Start at the original position */
+  }
+  100% {
+    transform: translateX(-20px); /* Move 20px to the left (adjust as needed) */
+  }
+}
+
+.btn {
+  position: relative;
+  display: inline-block;
+  margin-top: 1rem;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  max-width: max-content;
+  border: 0.1rem solid var(--primary-color);
+  background: var(--secondary);
+  padding: 1.2rem 4.5rem;
+  overflow: hidden;
+  z-index: 1;
+  border-radius: 0.5rem;
+}
+
+.btn .text {
+  display: inline-block;
+  position: relative; /* Use relative positioning for the animation */
+  transition: transform 0.3s ease; /* Smooth transition for other state changes */
+}
+
+.btn::before{
+  content: "";
+  position: absolute;
+  bottom: 100%; left: 50%;
+  transform: translateX(-50%);
+  width: 200%; height: 200%;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  transition: 500ms ease;
+  z-index: -1;
+}
+
+.btn .text{
+  transition: 250ms ease;
+}
+
+.btn .text-2{
+  position: absolute;
+  top: 100%; left: 50%;
+  transform: translateX(-50%);
+  min-width: max-content;
+  color: var(--secondary);
+}
+
+.btn:is(:hover, :focus-visible)::before{
+  bottom: -50%;
+}
+
+
+.btn:is(:hover, :focus-visible) .text-2{
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.shine{
+  position: relative;
+}
+
+.shine::after{
+  content: "";
+  position: absolute;
+  top: 0; left: 0; 
+  width: 50%;
+  height: 100%;
+  background-image: linear-gradient(to right, transparent 0%, #fff6 100%);
+  transform: skewX(-0.08turn) translateX(-180%);
+}
+
+.shine:is(:hover, :focus-within)::after{
+  transform: skewX(-0.08turn) translateX(275%);
+  transition: 1000ms ease;
+}
+
+/* -------------header------------------------------------ */
+
+.header{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 9%;
+}
+
+.header .logo{
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: var(--black);
+  text-decoration: none;
+}
+
+.header .logo i{
+  color: var(--primary-color);
+  padding-right: .5rem;
+}
+
+.header .navbar a{
+  font-size: 1.7rem;
+  color: var(--black);
+  margin: 0 1rem;
+  padding-block: 1rem;
+  text-decoration: none;
+}
+
+.header .navbar a:hover{
+  color: var(--primary-color);
+}
+
+.header .navbar .hover-underline{
+  position: relative;
+  max-width: max-content;
+}
+
+.header .navbar .hover-underline::after{
+  content: '';
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%;
+  height: .5rem;
+  border-block: .1rem solid var(--primary-color);
+  transform: scaleX(0.2);
+  opacity: 0;
+  transition: 500ms ease;
+}
+
+.header .navbar .hover-underline:is(:hover, :focus-visible)::after{
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.header .icons div{
+  font-size: 2.5rem;
+  margin-left: 1.7rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+.header .icons div:hover{
+  color: var(--primary-color);
+}
+
+#menu-btn{
+  display: none;
+}
+
+.header .login-form{
+  position: absolute;
+  top: 115%; right: -105%;
+  background: var(--white);
+  box-shadow: .5rem;
+  width: 35rem;
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+}
+
+.header .login-form.active{
+  right: 2rem;
+  transition: .4s linear;
+}
+
+.header .login-form h3{
+  font-size: 2.2rem;
+  color: var(--black);
+  text-align: center;
+  margin-bottom: .7rem;
+}
+
+.header .login-form .box{
+  font-size: 1.5rem;
+  margin: .7rem 0;
+  border: .1rem solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 1.2rem;
+  color: var(--black);
+  text-transform: none;
+  width: 100%;
+}
+
+.header .login-form .remember{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .7rem 0;
+}
+
+.header .login-form .remember label{
+  font-size: 1.5rem;
+  color: var(--black);
+  cursor: pointer;
+}
+
+/*---------------------------------------- home------------------------------------------------------------ */
+
+.home{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: url(../images/batus.avif) no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.home .content {
+  max-width: 100%; /* Ensure container width is not limiting */
+  overflow: visible; /* Allow overflow if necessary */
+  margin-bottom: 220px; /* Set the margin-top to 100px */
+  padding: 0; /* Remove any padding if present */
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.home .content h3 {
+  font-size: 5rem;
+  color: transparent; /* Make the text color transparent */
+  background: linear-gradient(135deg, #f7efef00, #242322); /* Soft gradient colors */
+  background-size: 200% 200%; /* Ensure gradient covers the text */
+  -webkit-background-clip: text; /* Clip the gradient to the text */
+  background-clip: text; /* Ensure compatibility */
+  animation: gradientAnimation 5s ease infinite; /* Apply animation */
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: visible;
+  margin: 0;
+}
+
+.home .content p {
+  font-size: 20px;
+  color: transparent; /* Make the text color transparent */
+  background: linear-gradient(135deg, white, black); /* Cool gradient colors */
+  background-size: 200% 200%; /* Ensure gradient covers the text */
+  -webkit-background-clip: text; /* Clip the gradient to the text */
+  background-clip: text; /* Ensure compatibility */
+  animation: gradientAnimation 5s ease infinite; /* Apply animation */
+  line-height: 2;
+  padding: 1rem 0;
+  text-align: center;
+  margin: 0;
+}
+
+
+/* ends */
+
+/* ------------------------------------------------------about ------------------------------------------*/
+
+.about .container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.about .container .about-image{
+  position: relative;
+  flex: 1 1 40rem;
+}
+
+.about .container .about-image img{
+  width: 80%;
+}
+
+.about .container .about-image .about-img{
+  position: absolute;
+  bottom: -10rem;
+  right: -1rem;
+  width: 25rem;
+  padding-block: 5rem;
+}
+
+.about .container .about-content{
+  flex: 1 1 50rem;
+  padding-left: 6rem;
+  padding-top: 8rem;
+}
+
+.about .container .about-content h3{
+  font-size: 3rem;
+  color: var(--primary-color);
+}
+
+.about .container .about-content p{
+  font-size: 1.6rem;
+  color: #444;
+  padding: 1rem 0;
+  line-height: 1.8;
+}
+
+/* ends */
+
+/* ------------------------------------------------------------------------subjects-------------------------------------- */
+
+.subjects .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+  
+}
+
+.subjects .box-container .box{
+  padding: 3rem 2rem;
+  text-align: center;
+  border: .1rem solid var(--primary-color);
+  
+  background: var(--secondary);
+  cursor: pointer;
+}
+
+.subjects .box-container .box:hover{
+  background: var(--primary-color);
+  
+}
+
+.subjects .box-container .box img{
+  height: 10rem;
+  margin-bottom: .7rem;
+  text-decoration: none;
+}
+
+.subjects .box-container .box h3{
+  font-size: 1.7rem;
+  color: #444;
+  padding: .5rem 0;
+  text-transform: capitalize;
+ 
+}
+
+.subjects .box-container .box:hover h3{
+  color: #fff;
+}
+
+.subjects .box-container .box p{
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #777;
+  
+}
+
+.subjects .box-container .box:hover p{
+  color: #eee;
+}
+
+/* end */
+
+/* --------------------------------------------------courses ------------------------------------------------------*/
+
+.courses .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 2rem;
+}
+
+.courses .box-container .box .image{
+  height: 25rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.courses .box-container .box .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.courses .box-container .box:hover .image img{
+  transform: scale(1.1);
+}
+
+.courses .box-container .box .image h3{
+  font-size: 1.5rem;
+  color: #444;
+  position: absolute;
+  top: 1rem; left: 1rem;
+  padding: .5rem 1.5rem;
+  background: var(--white);
+}
+
+.courses .box-container .box .content{
+  padding: 2rem;
+  position: relative;
+  border: 0.1rem solid var(--primary-color);
+}
+
+.courses .box-container .box .content h4{
+  position: absolute;
+  background: var(--primary-color);
+  color: var(--secondary);
+  top: -3rem; right: 1.5rem;
+  width: 6rem; 
+  height: 6rem;
+  line-height: 6rem;
+  text-align: center;
+  font-size: 1.4rem;
+  border-radius: 50%;
+}
+
+.courses .box-container .box .content p{
+  font-size: 1.4rem;
+  color: #444;
+  line-height: 2;
+}
+
+.courses .box-container .box .content h3{
+  font-size: 2rem;
+  color: #444;
+}
+
+.courses .box-container .box .content .stars{
+  padding: 1rem 0;
+}
+
+.courses .box-container .box .content .stars i{
+  font-size: 1.7rem;
+  color: var(--primary-color);
+}
+
+.courses .box-container .box .content .stars span{
+  font-size: 1.4rem;
+  color: #777;
+  margin-left: .5rem;
+}
+
+.courses .box-container .box .content .icons{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 0.1rem solid var(--primary-color);
+}
+
+.courses .box-container .box .content .icons span{
+  font-size: 1.5rem;
+  color: #444;
+}
+
+.courses .box-container .box .content .icons span i{
+  color: var(--primary-color);
+  padding-right: .5rem;
+}
+
+/* ends */
+
+/*------------------------------------------------------------- teacher------------------------ */
+
+.teacher .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.teacher .box-container .box{
+  background: var(--white);
+  box-shadow: var(--box-shadow);
+  border-radius: .5rem;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.teacher .box-container .box .image{
+  position: relative;
+  overflow: hidden;
+}
+
+.teacher .box-container .box .image img{
+  background: var(--secondary);
+  width: 100%;
+}
+
+.teacher .box-container .box:hover .image .share{
+  bottom: 0;
+}
+
+.teacher .box-container .box .image .share{
+  position: absolute;
+  bottom: -10rem; 
+  left: 0; right: 0;
+  padding: 2rem;
+}
+
+.teacher .box-container .box .image .share a{
+  height: 4rem;
+  width: 4rem;
+  line-height: 4rem;
+  font-size: 2rem;
+  margin: 0 1rem;
+  color: var(--secondary);
+  background: var(--primary-color);
+  border-radius: .5rem;
+}
+
+.teacher .box-container .box .image .share a:hover{
+  color: var(--primary-color);
+  background: var(--secondary);
+}
+
+.teacher .box-container .box .content{
+  padding: 2rem;
+  padding-top: 1rem;
+  align-items: center;
+}
+
+.teacher .box-container .box .content h3{
+  font-size: 2rem;
+  color: var(--black);
+}
+
+.teacher .box-container .box .content span{
+  font-size: 1.5rem;
+  line-height: 2;
+  color: #777;
+}
+
+/* ends */
+
+/*------------------------------------------------------- review -------------------------------------------*/
+
+.review .slide{
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+  border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  border-radius: 2rem;
+  position: relative;
+}
+
+.review .slide p{
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: .5rem;
+  line-height: 1.8;
+  color: #444;
+}
+
+.review .slide .wrapper{
+  display: flex;
+  justify-content: center;
+  gap: .3rem;
+}
+
+.review .slide .wrapper .separator{
+  width: .8rem;
+  height: .8rem;
+  border: .1rem solid var(--primary-color);
+  transform: rotate(45deg);
+  animation: rotate360 15s linear infinite;
+}
+
+@keyframes rotate360{
+  0%{
+    transform: rotate(0);
+  }
+  100%{
+    transform: rotate(1turn);
+  }
+}
+
+.review .slide .fa-quote-right{
+  position: absolute;
+  bottom: 3rem; right: 3rem;
+  font-size: 6rem;
+  color: var(--secondary);
+}
+
+.review .slide .user{
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  border-radius: .5rem;
+}
+
+.review .slide .user img{
+  height: 7rem;
+  width: 7rem;
+  border-radius: 15%;
+  object-fit: cover;
+  border: .1rem solid var(--primary-color);
+  padding: .5rem;
+}
+
+.review .slide .user h3{
+  font-size: 2rem;
+  color: var(--black);
+  padding-bottom: .5rem;
+}
+
+.review .slide .user .stars i{
+  font-size: 1.3rem;
+  color: var(--primary-color);
+}
+
+/* ends */
+
+/* ---------------------------------------------course --------------------------------------------*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+  
+}
+
+.outside-btn {
+  display: inline-block;
+  width: 250px; /* Adjust width as needed */
+  padding: 15px;
+  background: linear-gradient(45deg, #afd9de, #12c2b9); /* Gradient background */
+  color: #fff;
+  border: none;
+  border-radius: 50px; /* Rounded corners */
+  text-align: center;
+  text-decoration: none; /* Remove underline */
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 150px;
+  padding-right: 150px;
+  transition: all 0.3s ease; /* Smooth transition */
+  position: relative;
+  overflow: hidden;
+}
+
+.outside-btn .text {
+  display: block;
+  position: relative;
+}
+
+.outside-btn .text-1 {
+  z-index: 2;
+}
+
+.outside-btn .text-2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: all 0.3s ease;
+}
+
+.outside-btn:hover .text-2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.outside-btn:hover .text-1 {
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+.outside-btn:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%) rotate(45deg);
+  transition: all 0.75s ease;
+}
+
+.outside-btn:hover:before {
+  width: 400%;
+  height: 400%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+
+.blog .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+
+.blog .box-container .box{
+  box-shadow: var(--box-shadow);
+  border-radius: 2rem;
+}
+
+.blog .box-container .box .image{
+  height: 25rem;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  border-radius: 2rem 2rem 0 0;
+}
+
+.blog .box-container .box .image img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.blog .box-container .box:hover .image img{
+  transform: scale(1.1);
+}
+
+.blog .box-container .box .image h3{
+  font-size: 1.5rem;
+  color: #444;
+  position: absolute;
+  top: 1.5rem; left: 1rem;
+  padding: .5rem 1.5rem;
+  background: var(--white);
+  border-radius: 2rem 0 2rem 0;
+}
+
+.blog .box-container .box .content{
+  padding: 2rem 2rem;
+  background: var(--secondary);
+  border-radius: 0 0 2rem 2rem;
+}
+
+.blog .box-container .box .content .icons{
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.blog .box-container .box .content .icons a{
+  font-size: 1.4rem;
+  color: var(--primary-color);
+}
+
+.blog .box-container .box .content .icons a i{
+  padding-right: .5rem;
+}
+
+.blog .box-container .box .content h3{
+  font-size: 2.2rem;
+  color: var(--black);
+}
+
+.blog .box-container .box .content p{
+  font-size: 1.5rem;
+  color: var(--black);
+  line-height: 2;
+  padding: 1rem 0;
+}
+
+/* ends */
+
+/* -----------------------------------------------------------contact --------------------------------------------*/
+
+.contact .row{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contact .row .image{
+  flex: 1 1 40rem;
+}
+
+.contact .row .image img{
+  width: 70%;
+}
+
+.contact .row form{
+  flex: 1 1 40rem;
+  border: 0.1rem solid var(--primary-color);
+  padding: 2rem;
+}
+
+.contact .row form h3{
+  font-size: 2.5rem;
+  color: #444;
+  padding-bottom: 1rem;
+}
+
+.contact .row form .box{
+  width: 100%;
+  font-size: 1.6rem;
+  padding: 1.2rem 1.4rem;
+  border: .1rem solid var(--primary-color);
+  margin: .7rem 0;
+}
+
+.contact .row form .box:focus{
+  color: var(--primary-color);
+}
+
+.contact .row form textarea{
+  height: 15zrem;
+  resize: none;
+}
+
+/* ends */
+
+/* ------------------footer ---------------------------*/
+
+.footer{
+  background: var(--secondary);
+  text-align: center;
+}
+
+.footer .box-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 2rem;
+}
+
+.footer .box-container .box h3{
+  font-size: 2.2rem;
+  color: var(--primary-color);
+  padding: 1rem 0;
+}
+
+.footer .box-container .box p{
+  font-size: 1.5rem;
+  color: var(--black);
+  line-height: 2;
+  padding: 1rem 0;
+}
+
+.footer .box-container .box .share{
+  margin-top: 1rem;
+}
+
+.footer .box-container .box .share a{
+  height: 4.5rem;
+  width: 4.5rem;
+  line-height: 4.5rem;
+  border-radius: 10%;
+  font-size: 1.7rem;
+  border: .1rem solid var(--primary-color);
+  color: var(--primary-color);
+  margin-right: .3rem;
+  text-align: center;
+}
+
+.footer .box-container .box .share a:hover{
+  background: var(--primary-color);
+  color: var(--white);
+}
+
+.footer .box-container .box .link{
+  font-size: 1.7rem;
+  line-height: 2;
+  color: var(--black);
+  padding: .5rem 0;
+  display: block;
+}
+
+.footer .box-container .box .link:hover{
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.footer .credit{
+  font-size: 2rem;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  text-align: center;
+  color: var(--black);
+  border-top: .1rem solid var(--primary-color);
+}
+
+.footer .credit span{
+  color: var(--primary-color);
+}
+
+/* ends */
+
+/* media queries */
+
+@media (max-width:991px){
+
+  html{
+    font-size: 55%;
+  }
+
+  .header{
+    padding: 2rem 4rem;
+  }
+
+  section{
+    padding: 3rem 2rem;
+  }
+
+}
+
+@media (max-width:768px){
+
+  #menu-btn{
+    display: inline-block;
+  }
+
+  .header .navbar{
+    position: absolute;
+    top: 110%; right: -110%;
+    width: 30rem;
+    box-shadow: var(--box-shadow);
+    border-radius: .5rem;
+    background: var(--white);
+  }
+
+  .header .navbar.active{
+    right: 2rem;
+    transition: .4s linear;
+  }
+
+  .header .navbar a{
+    font-size: 2rem;
+    margin: 1rem 2.5rem;
+    display: block;
+  }
+
+  .home .content h3{
+    font-size: 3rem;
+  }
+
+  .about .container .about-content{
+    padding-left: 0;
+  }
+
+}
+
+@media (max-width:450px){
+  html{
+    font-size: 50%;
+  }
+}
+
+
+/* AdminSignUp.css */
+
+.admin-signup-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 270px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+}
+
+.admin-signup-form {
+  width: 100%;
+}
+
+.admin-signup-heading {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.admin-signup-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.admin-signup-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.admin-signup-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.admin-signup-button:hover {
+  background-color: #0056b3;
+}
+
+.admin-signup-footer {
+  margin-top: 15px;
+  text-align: center;
+  color: #333;
+  font-size: 16px;
+}
+
+.admin-signup-login-link {
+  color: #007bff;
+  text-decoration: none;
+  
+}
+
+.admin-signup-login-link:hover {
+  text-decoration: underline;
+}
+
+
+.admin-login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 270px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #f9f9f9;
+}
+
+.admin-login-heading {
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #333;
+}
+
+.admin-login-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 16px;
+  color: #333;
+}
+
+.admin-login-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.admin-login-button {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.admin-login-button:hover {
+  background-color: #0056b3;
+}
+
+
+
+/* SignUp.css */
+.container-signup {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card-signup {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.card-title-signup {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-signup {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-control-signup {
+  margin-bottom: 10px;
+}
+
+.btn-signup {
+  width: 100%;
+}
+
+
+/* styles.css */
+/* Add this CSS to your stylesheet or include it in a <style> tag in your component file */
+
+.container-login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.card-login {
+  width: 400px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title-login {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-login {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-control-login {
+  border-radius: 5px;
+  border: 1px solid #ced4da;
+  padding: 10px;
+}
+
+.form-buttons-login {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-login {
+  width: 100%;
+  margin-left: 140px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.btn-link-login {
+  text-align: center;
+  display: block;
+  margin-top: 10px;
+  margin-left: 10px;
+  font-size: 15px;
+text-decoration: none;
+}
+
+.btn-link-login:hover {
+  text-decoration: none;
+}
+
+
+/* DriveManager.css */
+
+.drive-manager-container {
+  max-width: 600px;
+  height: 800px;
+  margin:auto;
+  
+}
+.admin-heading {
+  margin-top: 170px;
+  margin-bottom: 20px;
+  color: #12c2b9; /* Green color */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  font-size: 36px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(193, 183, 183, 0.055);
+}
+
+
+.create-folder-section,
+.delete-file-section,
+.upload-file-section,
+.delete-folder-section {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  margin-bottom: 20px;
+  margin-top: 60px;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+}
+
+.del{
+  margin-top: 45px;
+}
+
+.create-folder-section h4,
+.delete-file-section h4,
+.upload-file-section h4,
+.delete-folder-section h4 {
+  margin-bottom: 20px;
+}
+
+#folder-name-input,
+#parent-folder-name-input,
+#delete-file-name-input,
+#delete-folder-name-input,
+#upload-folder-name-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#file-input {
+  margin-top: 10px;
+}
+
+#upload-file-button,
+#create-folder-button,
+#delete-file-button,
+#delete-folder-button {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+/* style.css */
+
+.list-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin-top: 200px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.list-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.list-items {
+  list-style: none;
+  padding: 0;
+}
+
+.list-item {
+  margin-bottom: 10px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.btn {
+  width: 100%;
+  text-align: left;
+}
+
+.btn-folder {
+  background-color:#adf0ed; /* Blue background */
+  color: #000000; /* White text */
+    border: 1px solid #007bff;
+  padding: 13px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-folder:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+  border-color: #004b9f;
+}
+
+.btn-file {
+  background-color:#6cccc7; /* Green background */
+  color: #000000; /* White text */
+  border: 1px solid #28a745;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-file:hover {
+  background-color: #1e7e34; /* Darker green on hover */
+  border-color: #1c7430;
+}
+
+.btn-back {
+  background-color: #6c757d; /* Gray background */
+  color: #fbfafa; /* White text */
+  border: 1px solid #6c757d;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.btn-back:hover {
+  background-color: #5a6268; /* Darker gray on hover */
+  border-color: #545b62;
+}
+
+.btn-back i {
+  margin-right: 10px;
+}
+
+/* Remove yellow color and use a default color for folder icon */
+.bi-folder {
+  color: black; /* White icon */
+  padding: 5px;
+}
+
+/* Optional: Adjust the file icon color */
+.bi-file-earmark {
+  color: #000000; /* Blue for file */
+}
+
+.bi {
+  font-size: 20px;
+}
+.forgot-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Light background color for better contrast */
+}
+
+.card1 {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.forgot-password-card-header {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.forgot-password-message {
+  color: #d9534f; /* Red color for error messages */
+  margin-bottom: 20px;
+}
+
+.passInput {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.passInput:focus {
+  border-color: #007bff; /* Blue color for focus state */
+  outline: none;
+}
+
+.forgot-password-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.forgot-password-submit-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.forgot-password-submit-btn:disabled {
+  background-color: #6c757d; /* Grey color for disabled state */
+  cursor: not-allowed;
+}
+
+.reset-password-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5; /* Light background color for better contrast */
+}
+
+.reset-password-card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.reset-password-card-header {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.reset-password-message {
+  color: #d9534f; /* Red color for error messages */
+  margin-bottom: 20px;
+}
+
+.reset-password-input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.reset-password-input:focus {
+  border-color: #007bff; /* Blue color for focus state */
+  outline: none;
+}
+
+.reset-password-submit-btn {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.reset-password-submit-btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.reset-password-submit-btn:disabled {
+  background-color: #6c757d; /* Grey color for disabled state */
+  cursor: not-allowed;
+}
+/* Basic button styles */
+.logout-button {
+  background-color: #12c2b9; /* Green background */
+  border: none;             /* Remove borders */
+  color: white;             /* White text */
+  padding: 10px ;       /* Some padding */
+  text-align: center;       /* Center the text */
+  text-decoration: none;    /* Remove underline */
+  display: inline-block;    /* Make the button inline-block */
+  font-size: 16px;          /* Increase font size */
+  margin: 4px 2px;          /* Add some margin */
+  cursor: pointer;          /* Add a pointer cursor on hover */
+  border-radius: 4px;       /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth background-color transition */
+}
+
+/* Hover effect */
+.logout-button:hover {
+  background-color:#12c2b9; /* Darker green background on hover */
+}
+
+/* Additional underline effect on hover */
+.logout-button.hover-underline:hover {
+  text-decoration: underline;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the container's content */
+  padding: 20px;
+  width: 100%;
+  height: 100vh; /* Full height of the viewport */
+  box-sizing: border-box; /* Ensure padding and borders are included in the element's total width and height */
+}
+
+.list-title {
+  margin-bottom: 20px;
+  width: 100%; /* Ensure the title is full width */
+  text-align: center; /* Center the title text */
+}
+
+.list-group {
+  width: 100%; /* Full width of the container */
+  max-width: 800px; /* Optional: to limit the maximum width of the list */
+}
+
+.list-items {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.list-group-item {
+  display: flex;
+  justify-content: center; /* Center the buttons within the list item */
+  padding: 10px;
+  margin-bottom: 10px;
+  width: 100%; /* Full width for each item */
+}
+
+.btn-folder, .btn-file {
+  width: 90%; /* Increase width of the buttons */
+  max-width: 500px; /* Optional: limit maximum width for larger screens */
+  text-align: center; /* Center the text inside the button */
+  padding: 15px; /* Adjust padding for better look */
+  display: flex;
+  justify-content: center; /* Center the content inside the button */
+  align-items: center; /* Center the content vertically */
+}
+
+.btn-back {
+  display: flex;
+  justify-content: center; /* Center the Back button text */
+  align-items: center;
+  margin-top: 20px;
+  width: 90%; /* Increase width of the Back button */
+  max-width: 500px; /* Optional: limit maximum width for larger screens */
+  text-align: center; /* Center the text inside the button */
+}
+
+#tag {
+  margin-left: 5px;
+  text-decoration: none;
+  color: inherit;
+}
